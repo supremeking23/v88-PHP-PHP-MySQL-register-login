@@ -3,6 +3,18 @@ session_start();
 require_once("connection.php");
 date_default_timezone_set('Asia/Manila');
 if(isset($_POST["process_type"]) AND $_POST["process_type"] === "register") {
+
+    function checkForNumericCharacter($str){
+        $strArray = str_split($str);
+        // $has_error = false;
+        for($i = 0; $i < count($strArray); $i++){
+            if(is_numeric($strArray[$i])){
+                // $has_error = true;
+                return TRUE;
+                // break;
+            }
+        }
+    }
     
     if(empty($_POST["first_name"])){
         $_SESSION["errors"][] = "First Name cannot be blank";
@@ -20,9 +32,43 @@ if(isset($_POST["process_type"]) AND $_POST["process_type"] === "register") {
         $_SESSION["errors"][] = "Confirm Password cannot be blank";
     }
 
+    
+    if(checkForNumericCharacter($_POST["first_name"])){
+        $_SESSION["errors"][] = "First name cannot have a number";
+    }
+
+    if(checkForNumericCharacter($_POST["last_name"])){
+        $_SESSION["errors"][] = "Last name cannot have a number";
+    }
+
+    if(!empty($_POST["first_name"]) AND !(strlen($_POST["first_name"]) > 2)){
+        $_SESSION["errors"][] = "First name must be atleast 2 characters long";
+    }
+
+    if(!empty($_POST["last_name"]) AND !(strlen($_POST["last_name"]) > 2)){
+        $_SESSION["errors"][] = "Last name must be atleast 2 characters long";
+    }
+
+    $email = escape_this_string($_POST["email"]);
+    if(!empty($_POST["email"]) AND !(filter_var($email,FILTER_VALIDATE_EMAIL))){
+        $_SESSION["errors"][] = "Email must be valid";
+    }
+
+    // 
+    if((!empty($_POST["password"]) AND !empty($_POST["confirm_password"])) AND (strlen($_POST["password"]) !== strlen($_POST["confirm_password"]))) {
+        $_SESSION["errors"][] = "password and confirm password does not match";
+    }
+
+    if((!empty($_POST["password"]) AND !(strlen($_POST["password"]) > 8))){
+        $_SESSION["errors"][] = "password must be atleast 8 characters long";
+    }
+
+
     if(isset($_SESSION["errors"]) AND count($_SESSION["errors"]) > 0){
         header("Location: index.php");
+        die();
     }
+
 
     //sanitize field
     $first_name = escape_this_string($_POST["first_name"]);
@@ -40,7 +86,7 @@ if(isset($_POST["process_type"]) AND $_POST["process_type"] === "register") {
     if($run_query){
         
         
-        $_SESSION["errors"][] = "Email already exist";
+        // $_SESSION["errors"][] = "Email already exist";
         header("Location: index.php");
     }else {
 
