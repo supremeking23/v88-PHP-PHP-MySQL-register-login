@@ -20,7 +20,7 @@ session_start();
         <?php 
         if(isset($_SESSION["errors"])){
                 foreach($_SESSION["errors"] as $errors):?>
-                <div>
+                <div class="alert alert-danger">
                     <?= $errors;?>
                 </div>
                 <?php endforeach;
@@ -31,22 +31,22 @@ session_start();
         
        
        <div class="cta">
-            <h1>Learn to code by watching others</h1>
-            <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.</p>
+            <h1>Learn to code</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium voluptate quo, dolorem rem nostrum harum earum unde alias omnis officia adipisci, amet consequuntur quasi suscipit facere dolor repudiandae magnam? Voluptas.</p>
 
           
        </div>
 
        <div class="form">
-            <h2>Try it free 7 days then $20/mo. thereafter</h2>
+            <h2>Registration Form</h2>
 
             <form action="process.php" method="POST">
                 <input type="hidden" name="process_type" value="register">
-                <input type="text" name="first_name" placeholder="First Name" value="">
-                <input type="text" name="last_name" placeholder="Last Name" value="">
-                <input type="text" name="email" placeholder="Email" value="">
-                <input type="password" name="password" placeholder="Password" value="">
-                <input type="password" name="confirm_password" placeholder="Confirm Password" value="">
+                <input type="text" name="first_name" placeholder="First Name" class=<?= (isset($_SESSION["error"]["error-first-name"]) ? "error-field" :"")?> value="">
+                <input type="text" name="last_name" placeholder="Last Name" class=<?= (isset($_SESSION["error"]["error-last-name"]) ? "error-field" :"")?>  value="">
+                <input type="text" name="email" placeholder="Email" class=<?= (isset($_SESSION["error"]["error-email"]) ? "error-field" :"")?>  value="">
+                <input type="password" name="password" placeholder="Password" class=<?= (isset($_SESSION["error"]["error-password"]) ? "error-field" :"")?>  value="">
+                <input type="password" name="confirm_password" placeholder="Confirm Password" class=<?= (isset($_SESSION["error"]["error-confirm-password"]) ? "error-field" :"")?>  value="">
                 <input type="submit" name="submit" value="Register">
                 <p>Already registered ? <a href="login.php">Login here</a></p>
             </form>
@@ -59,5 +59,6 @@ session_start();
 </body>
 </html>
 <?php unset($_SESSION["errors"]);
+unset($_SESSION["error"]);
 
 ?>

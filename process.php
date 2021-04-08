@@ -18,18 +18,23 @@ if(isset($_POST["process_type"]) AND $_POST["process_type"] === "register") {
     
     if(empty($_POST["first_name"])){
         $_SESSION["errors"][] = "First Name cannot be blank";
+        $_SESSION["error"]["error-first-name"] = TRUE;
     }
     if(empty($_POST["last_name"])){
         $_SESSION["errors"][] = "Last Name cannot be blank";
+        $_SESSION["error"]["error-last-name"] = TRUE;
     }
     if(empty($_POST["email"])){
         $_SESSION["errors"][] = "Email cannot be blank";
+        $_SESSION["error"]["error-email"] = TRUE;
     }
     if(empty($_POST["password"])){
         $_SESSION["errors"][] = "Password cannot be blank";
+        $_SESSION["error"]["error-password"] = TRUE;
     }
     if(empty($_POST["confirm_password"])){
         $_SESSION["errors"][] = "Confirm Password cannot be blank";
+        $_SESSION["error"]["error-confirm-password"] = TRUE;
     }
 
     
@@ -107,6 +112,20 @@ if(isset($_POST["process_type"]) AND $_POST["process_type"] === "register") {
 }else if(isset($_POST["process_type"]) AND $_POST["process_type"] === "login") {
     $email = escape_this_string($_POST["email"]);
     $password = escape_this_string($_POST["password"]);
+
+    if(empty($_POST["email"])){
+        $_SESSION["errors"][] = "Email cannot be blank";
+        $_SESSION["error"]["error-email"] = TRUE;
+    }
+    if(empty($_POST["password"])){
+        $_SESSION["errors"][] = "Password cannot be blank";
+        $_SESSION["error"]["error-password"] = TRUE;
+    }
+
+    if(isset($_SESSION["errors"]) AND count($_SESSION["errors"]) > 0){
+        header("Location: login.php");
+        die();
+    }
 
      //check email if exist
      $query = "SELECT * FROM users WHERE email = '$email'";

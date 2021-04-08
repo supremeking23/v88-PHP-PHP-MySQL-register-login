@@ -1,108 +1,112 @@
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: url(./img/bg-intro-desktop.png) #9c95e9;
-    position: relative;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	background: url(./img/bg-intro-desktop.png) #9c95e9;
+	position: relative;
 }
 
 body * {
-    /* outline:1px dashed red; */
+	/* outline:1px dashed red; */
+}
+
+.alert {
+	position: relative;
+	padding: 0.75rem 1.25rem;
+	margin-bottom: 1rem;
+	border: 1px solid transparent;
+	border-radius: 0.25rem;
+}
+
+.alert-danger {
+	color: #721c24;
+	background-color: #f8d7da;
+	border-color: #f5c6cb;
+}
+
+.error-field {
+	border: 2px solid #721c24 !important;
 }
 
 .container {
-    /* width:1400px; */
-    /* width: 100%; */
-    /* height: 100vh; */
-    padding:50px 20px 10px 90px
+	/* width:1400px; */
+	/* width: 100%; */
+	/* height: 100vh; */
+	padding: 50px 20px 10px 90px;
 }
 
-.dim{
-    position: absolute;
-    width: 100%;
-    background: red;
-    height: 100%;
+.container .cta,
+.container .form {
+	display: inline-block;
+	vertical-align: middle;
 }
 
-    .container .cta, .container .form{
-        display: inline-block;
-        vertical-align: middle;
-       
-    }
+.container .cta {
+	width: 550px;
+	color: #fff;
+	text-align: center;
+}
+.container .cta p {
+	line-height: 2;
+	font-size: 1.3rem;
+}
 
+.container .form {
+	margin-left: 200px;
+	width: 550px;
+	margin-bottom: 10px;
+}
 
-    .container .cta{
-        width:550px;
-        color:#fff;
-        text-align: center;
-    }
-        .container .cta p{
-            line-height: 2;
-            font-size: 1.3rem;
-        }
+.container h2 {
+	background: #ff7a7a;
+	border-radius: 5px;
+	padding: 0.8rem 2rem;
+	text-align: center;
+	box-shadow: 0 0.5rem 0 rgb(0 0 0 / 20%);
+	color: #fff;
+}
 
-    .container .form{
-        margin-left:200px;
-        width: 550px;
-        margin-bottom: 10px;
-       
-    }
+.container .form form {
+	text-align: center;
 
-        .container h2 {
-            background: #FF7A7A;
-            border-radius: 5px;
-            padding: .8rem 2rem;
-            text-align: center;
-            box-shadow: 0 0.5rem 0 rgb(0 0 0 / 20%);
-            color: #fff;
-        }
+	background-color: #fff;
+	border-radius: 7px;
+	padding: 2rem;
+	box-shadow: 0 0.5rem 0 rgb(0 0 0 / 20%);
+}
+.container .form form input[type="text"],
+.container .form form input[type="password"] {
+	display: block;
+	/* padding:10px; */
+	width: 95%;
+	margin-bottom: 10px;
+	border: 2px solid #ddd;
+	padding: 1rem;
+	font-weight: 600;
+	border-radius: 5px;
+	/* width: 100%; */
+}
 
-        .container .form form{
-            text-align: center;
+.container .form form input[type="submit"] {
+	width: 100%;
+	background: #88e0ba;
+	border-color: #88e0ba;
+	color: #fff;
+	box-shadow: 0 3px 0 rgb(0 0 0 / 20%);
+	transition: all 0.2s;
+	cursor: pointer;
+	padding: 1rem 3.5rem;
+	border-radius: 5px;
+}
 
-            background-color: #fff;
-            border-radius: 7px;
-            padding: 2rem;
-            box-shadow: 0 0.5rem 0 rgb(0 0 0 / 20%);
-        
-        }
-        .container .form form input[type="text"],.container .form form input[type="password"]{
-            display:block;
-            /* padding:10px; */
-            width:95%;
-            margin-bottom:10px;
-            border: 2px solid #ddd;
-            padding: 1rem;
-            font-weight: 600;
-            border-radius: 5px;
-            /* width: 100%; */
-            
-        }
+.container .form form input[type="submit"]:hover {
+	filter: opacity(0.6);
+}
 
-        .container .form form input[type="submit"]{
-            width:100%;
-            background: #88E0BA;
-            border-color: #88E0BA;
-            color: #fff;
-            box-shadow: 0 3px 0 rgb(0 0 0 / 20%);
-            transition: all .2s;
-            cursor: pointer;
-            padding: 1rem 3.5rem;
-            border-radius: 5px;
-        }
+.container .form form a {
+	color: #9c95e9;
+	text-decoration: none;
+}
 
-
-        .container .form form input[type="submit"]:hover{
-            filter: opacity(0.6);
-        }
-
-        .container .form form a {
-            color:#9c95e9;
-            text-decoration: none;
-        }
-    
-
-    .container .created_by {
-        text-align: center;
-        font-size: 1.4rem;
-    }
-
-
+.container .created_by {
+	text-align: center;
+	font-size: 1.4rem;
+}
